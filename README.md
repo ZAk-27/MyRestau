@@ -52,6 +52,8 @@ This project is licensed under the MIT License.
 
 If you want to contact me, you can reach us at :
 
-> **`baladithami@medi1tv.com`**
-> **`mefdev.pro@gmail.com`**
-> **`touhadi.zakaria@gmail.com`**
+- `baladithami@medi1tv.com`
+
+- `mefdev.pro@gmail.com`
+
+- `touhadi.zakaria@gmail.com`
