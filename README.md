@@ -25,8 +25,8 @@ This project leverages several cutting-edge technologies:
 
 To install the application, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/yourusername/myrestau.git`
-2. Navigate to the project directory: `cd myrestau`
+1. Clone the repository: `git clone https://github.com/ZAk-27/MyRestau.git`
+2. Navigate to the project directory: `cd MyRestau`
 3. Install the dependencies: `npm install`
 4. Start the development server: `npm run dev`
 
