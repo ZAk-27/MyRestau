@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class food(models.Model):
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=4, decimal_places=2)
@@ -20,11 +21,14 @@ class Order(models.Model):
 
     customer_name = models.CharField(max_length=255)
     email = models.EmailField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
 
+
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    order = models.ForeignKey(
+        Order, related_name='items', on_delete=models.CASCADE, null=True)
     food = models.ForeignKey(food, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     subtotal = models.DecimalField(max_digits=10, decimal_places=2)
@@ -32,4 +36,5 @@ class OrderItem(models.Model):
     def save(self, *args, **kwargs):
         # Calculate subtotal before saving
         self.subtotal = self.food.price * self.quantity
+
         super().save(*args, **kwargs)

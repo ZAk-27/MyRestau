@@ -1,4 +1,3 @@
-from django.http import JsonResponse
 from .models import food
 from .serializers import FoodSerializer
 from django.core.exceptions import ObjectDoesNotExist
@@ -6,9 +5,14 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-
+from rest_framework import generics
+from .models import Order
+from .serializers import OrderSerializer, OrderItemSerializer
 
 # Create your views here.
+
+# food/views.py
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -20,6 +24,7 @@ def getFood(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def getFoodByID(request, id):
     try:
         particularFood = food.objects.get(id=id)
@@ -42,6 +47,7 @@ def getFoodByID(request, id):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def createFood(request):
     food_data = request.data
     isFoodExist = food.objects.filter(name=food_data['name']).exists()
@@ -69,6 +75,7 @@ def createFood(request):
 
 
 @api_view(['PUT'])
+@permission_classes([IsAuthenticated])
 def updateFood(request, id):
     try:
         foodToUpdate = food.objects.get(id=id)
@@ -93,6 +100,7 @@ def updateFood(request, id):
 
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def deleteFood(request, id):
     try:
         foodToDelete = food.objects.get(id=id)
@@ -106,3 +114,21 @@ def deleteFood(request, id):
             "error": "Food does not currently exist in the database",
             "success": False
         }, status=404)
+
+
+# orders/views.py
+@permission_classes([IsAuthenticated])
+class OrderListCreateView(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+@permission_classes([IsAuthenticated])
+class OrderRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+@permission_classes([IsAuthenticated])
+class OrderItemCreateView(generics.CreateAPIView):
+    serializer_class = OrderItemSerializer
