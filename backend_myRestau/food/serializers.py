@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import food, Order, OrderItem
+from .models import food, Order, OrderItem, Review
 
 
 class FoodSerializer(serializers.ModelSerializer):
@@ -21,4 +21,10 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
+        fields = '__all__'
+    
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
         fields = '__all__'

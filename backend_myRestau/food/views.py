@@ -7,7 +7,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
 from .models import Order
-from .serializers import OrderSerializer, OrderItemSerializer
+from .serializers import OrderSerializer, OrderItemSerializer, ReviewSerializer
 
 # Create your views here.
 
@@ -132,3 +132,8 @@ class OrderRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 @permission_classes([IsAuthenticated])
 class OrderItemCreateView(generics.CreateAPIView):
     serializer_class = OrderItemSerializer
+
+
+@permission_classes([IsAuthenticated])
+class ReviewCreateView(generics.CreateAPIView):
+    serializer_class = ReviewSerializer
