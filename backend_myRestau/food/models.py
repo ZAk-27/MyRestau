@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import UserData
 
 # Create your models here.
 
@@ -38,3 +39,11 @@ class OrderItem(models.Model):
         self.subtotal = self.food.price * self.quantity
 
         super().save(*args, **kwargs)
+
+
+class Review(models.Model):
+    food = models.ForeignKey(food, related_name='reviews', on_delete=models.CASCADE)
+    user = models.ForeignKey(UserData, on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField()
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
