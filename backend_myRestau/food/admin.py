@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import food, Order, OrderItem
+from .models import food, Order, OrderItem, Review
 # Register your models here.
 
 
@@ -30,6 +30,17 @@ class orderItemAdmin(admin.ModelAdmin):
     ordering = ['order']
 
 
+class reviewAdmin(admin.ModelAdmin):
+    list_display = ['food', 'user', 'rating', 'comment', 'created_at']
+    search_fields = ['food', 'user']
+    list_filter = ['rating', 'created_at']
+    list_per_page = 10
+    ordering = ['created_at']
+    date_hierarchy = 'created_at'
+
+
+
 admin.site.register(food, foodAdmin)
 admin.site.register(Order, orderAdmin)
 admin.site.register(OrderItem, orderItemAdmin)
+admin.site.register(Review, reviewAdmin)
