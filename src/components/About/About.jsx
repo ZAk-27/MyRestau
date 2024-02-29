@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import BiryaniImg from "../../assets/burger3-.png";
+import BiryaniImg from "../../assets/burger-banner.png";
 import Vector from "../../assets/banner.jpg";
 import { GrSecure } from "react-icons/gr";
 import { IoFastFood } from "react-icons/io5";
 import { GiFoodTruck } from "react-icons/gi";
 
 
-const Banner = () => {
+const About = () => {
   const bgImage = {
     backgroundImage: `url(${Vector})`,
     backgroundPosition: "center",
@@ -74,4 +74,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default About;

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import BurgerImg1 from "../../assets/burger10-.png";
 import BurgerImg2 from "../../assets/burger2-.png";
 import BurgerImg3 from "../../assets/burger1-.png";
-import Vector from "../../assets/hero-section.jpg";
+import Vector from "../../assets/placeholder.jpg";
+
 
 const ImageList = [
   {
@@ -20,17 +21,10 @@ const ImageList = [
 ];
 
 const Hero = () => {
-  const [imageId, setImageId] = useState(BurgerImg1);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = imageId;
-    img.onload = () => setLoading(false);
-  }, [imageId]);
+  const [imageId, setImageId] = React.useState(BurgerImg1);
 
   const bgImage = {
-    backgroundImage: `url(${Vector})`,
+    backgroundImage: `url(${ Vector})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
@@ -70,13 +64,18 @@ const Hero = () => {
               </div>
             </div>
             {/* Image section */}
-            <div className="min-h-[450px] sm:min-h-[450px] flex justify-center items-center relative order-1 sm:order-2 ">
+            <div 
+             data-aos="zoom-out"
+             data-aos-duration="400"
+             data-aos-once="true"
+             className="min-h-[450px] sm:min-h-[450px] flex justify-center items-center relative order-1 sm:order-2 "
+            >
               <div className="h-[300px] sm:h-[450px] overflow-hidden flex justify-center items-center">
-                {loading ? <div>Loading...</div> : <img
+                <img
                   src={imageId}
                   alt="burger img"
                   className="w-[300px] sm:w-[450px] sm:scale-125  mx-auto ping "
-                />}
+                />
               </div>
               <div className="flex lg:flex-col lg:top-1/3 lg:-translate-y-1/3 lg:py-2 justify-center gap-4 absolute bottom-[0px] lg:-right-10 bg-white/30 rounded-full">
                 {ImageList.map((item) => (
@@ -91,10 +90,9 @@ const Hero = () => {
                           ? BurgerImg2
                           : BurgerImg3
                       );
-                      setLoading(true);
                     }}
                     alt="burger img"
-                    className="max-w-[80px] h-[80px] object-contain inline-block hover:scale-105 duration-200 curso"
+                    className="max-w-[80px] h-[80px] object-contain inline-block hover:scale-105 duration-200 "
                   />
                 ))}
               </div>

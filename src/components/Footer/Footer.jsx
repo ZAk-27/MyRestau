@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import {
   FaFacebook,
@@ -51,7 +52,7 @@ const Footer = () => {
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
                   Important Links
                 </h1>
-                <ul className={`flex flex-col gap-3`}>
+                <ul className={`flex flex-col gap-3 list-disc list-inside`}>
                   <li className="cursor-pointer">Home</li>
                   <li className="cursor-pointer">About</li>
                   <li className="cursor-pointer">Services</li>
@@ -64,7 +65,7 @@ const Footer = () => {
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
                   Links
                 </h1>
-                <ul className="flex flex-col gap-3">
+                <ul className="flex flex-col gap-3 list-disc list-inside">
                   <li className="cursor-pointer">Home</li>
                   <li className="cursor-pointer">About</li>
                   <li className="cursor-pointer">Services</li>
